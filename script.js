@@ -11,12 +11,36 @@
 // logger();
 // logger();
 
-function fruitProcessor(apple, orange) {
-  const juice = `Juice with ${apple} apples and ${orange} oranges.`;
-  return juice;
-}
-const MixJuice = fruitProcessor(5, 2);
-console.log(MixJuice);
+// Function declaration
+// function calAge1(birthYear) {
+//   return 2037 - birthYear;
+// }
+// const age1 = calAge1(1991);
+// console.log(age1);
 
-const appleOrangeJuice = fruitProcessor(2, 4);
-console.log(appleOrangeJuice);
+// // Function Expression
+// const calAge2 = function (birthYear) {
+//   return 2037 - birthYear;
+// };
+// const age2 = calAge2(1991);
+// console.log(age2);
+
+//Function expression
+// const calAge2 = function (birthYear) {
+//   return 2037 - birthYear;
+// };
+// console.log(calAge2(1991));
+
+//Arrow function
+const calAge3 = (birthYear) => 2037 - birthYear;
+const age3 = calAge3(1991);
+console.log(age3);
+
+const yearsUntilRetirement = (birthYear, firstName) => {
+  const age = 2037 - birthYear;
+  const retirement = 65 - age;
+  // return retirement;
+  return `${firstName} retires in ${retirement} years.`;
+};
+console.log(yearsUntilRetirement(1991, "Jonas"));
+console.log(yearsUntilRetirement(1980, "Bob"));
