@@ -75,3 +75,25 @@
 //   }
 // }
 // console.log(yearsUntilRetirement(1999, "Jonas"));
+
+const calcAverage = (score1st, score2nd, score3rd) => {
+  return (score1st + score2nd + score3rd) / 3;
+};
+
+const checkWinner = (score1, score2, score3, score4, score5, score6) => {
+  const avgDolhins = calcAverage(score1, score2, score3);
+  const avgKoalas = calcAverage(score4, score5, score6);
+
+  console.log(`The average score of Dolhins is ${avgDolhins}.`);
+  console.log(`The average score of Koalas is ${avgKoalas}.`);
+
+  if (avgDolhins >= 2 * avgKoalas) {
+    console.log(`Dolhins are the winners, Congratulate them.`);
+  } else if (avgKoalas >= 2 * avgDolhins) {
+    console.log(`Koalas are the winners, Congratulate them.`);
+  } else {
+    console.log(`No one could make it.`);
+  }
+};
+
+checkWinner(85, 54, 41, 23, 34, 27);
