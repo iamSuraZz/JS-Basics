@@ -67,33 +67,78 @@
 //   const retirement = 65 - age;
 
 //   if (retirement > 0) {
-//     console.log(`${firstName} retires in ${retirement} years.`);
-//     return retirement;
-//   } else {
-//     console.log(`${firstName} has already retired.`);
-//     return -1;
-//   }
+// //     console.log(`${firstName} retires in ${retirement} years.`);
+// //     return retirement;
+// //   } else {
+// //     console.log(`${firstName} has already retired.`);
+// //     return -1;
+// //   }
+// // }
+// // console.log(yearsUntilRetirement(1999, "Jonas"));
+
+// //
+// const friends = ["Michael", "Steven", "Peter"];
+// console.log(friends);
+
+// const y = new Array(1991, 1984, 2009, 2020);
+
+// console.log(friends[2]);
+// console.log(friends.length);
+
+// console.log(friends[friends.length - 1]);
+
+// friends[2] = "Jay";
+// console.log(friends);
+
+// // We cannot reinitialize array
+// // friends = ["Bob", "Alice"];
+
+// const firstName = "Jonas";
+// const jonas = [firstName, "Schinder", 2037 - 1991, "teacher", friends];
+// console.log(jonas);
+// console.log(jonas.length);
+
+// //Exercise
+// const calcAge = function (birthYear) {
+//   return 2037 - birthYear;
+// };
+// const years = [1990, 1967, 2002, 2010, 2018];
+
+// const age1 = calcAge(years[0]);
+// const age2 = calcAge(years[1]);
+// const age3 = calcAge(years[years.length - 1]);
+// console.log(age1, age2, age3);
+
+// const ages = [
+//   calcAge(years[0]),
+//   calcAge(years[1]),
+//   calcAge(years[years.length - 1]),
+// ];
+// console.log(ages);
+// const friends = ["Jay", "Michael", "Steven"];
+// const newList = friends.push("Ram");
+// console.log(friends);
+// console.log(newList);
+
+// friends.unshift("Hari");
+// console.log(friends);
+
+// friends.pop();
+// const popped = friends.pop();
+// console.log(friends);
+// console.log(popped);
+
+// const shifted = friends.shift();
+// console.log(shifted);
+// console.log(friends);
+
+// console.log(friends.indexOf("Michael"));
+// console.log(friends.indexOf("Bahubali"));
+
+// friends.push("Ram");
+// console.log(friends.includes("Ram"));
+// console.log(friends.includes("Shanoj"));
+
+// if (friends.includes("Ram")) {
+//   console.log(`Jay Shree Ram`);
 // }
-// console.log(yearsUntilRetirement(1999, "Jonas"));
-
-const calcAverage = (score1st, score2nd, score3rd) => {
-  return (score1st + score2nd + score3rd) / 3;
-};
-
-const checkWinner = (score1, score2, score3, score4, score5, score6) => {
-  const avgDolhins = calcAverage(score1, score2, score3);
-  const avgKoalas = calcAverage(score4, score5, score6);
-
-  console.log(`The average score of Dolhins is ${avgDolhins}.`);
-  console.log(`The average score of Koalas is ${avgKoalas}.`);
-
-  if (avgDolhins >= 2 * avgKoalas) {
-    console.log(`Dolhins are the winners, Congratulate them.`);
-  } else if (avgKoalas >= 2 * avgDolhins) {
-    console.log(`Koalas are the winners, Congratulate them.`);
-  } else {
-    console.log(`No one could make it.`);
-  }
-};
-
-checkWinner(85, 54, 41, 23, 34, 27);
