@@ -241,15 +241,23 @@
 //   rep++;
 // }
 
-const jonas = [
-  "Jonas",
-  "Schmdn",
-  2037 - 1991,
-  "teacher",
-  ["Michael", "Peter", "Steven"],
-  true,
-];
+//
+// const types = [];
 
-for (let i = 0; i < jonas.length; i++) {
-  console.log(jonas[i], typeof jonas[i]);
+// for (let i = 0; i < jonas.length; i++) {
+//   console.log(jonas[i], typeof jonas[i]);
+//   // types[i] = typeof jonas[i];
+//   types.push(typeof jonas[i]);
+// }
+
+// console.log(types);
+
+const years = [1919, 1987, 1965, 1945, 1976];
+const ages = [];
+for (let i = 0; i < years.length; i++) {
+  let age = 2022 - years[i];
+  ages.push(age);
 }
+console.log(ages);
+
+// continue and break
