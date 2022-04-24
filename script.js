@@ -252,12 +252,43 @@
 
 // console.log(types);
 
-const years = [1919, 1987, 1965, 1945, 1976];
-const ages = [];
-for (let i = 0; i < years.length; i++) {
-  let age = 2022 - years[i];
-  ages.push(age);
-}
-console.log(ages);
+// const years = [1919, 1987, 1965, 1945, 1976];
+// const ages = [];
+// for (let i = 0; i < years.length; i++) {
+//   let age = 2022 - years[i];
+//   ages.push(age);
+// }
+// console.log(ages);
 
 // continue and break
+// const jonas = [
+//   "Jonas",
+//   "Schmdn",
+//   2037 - 1991,
+//   "teacher",
+//   ["Michael", "Peter", "Steven"],
+//   true,
+// ];
+// console.log("--- CONTINUE");
+// for (let i = 0; i < jonas.length; i++) {
+//   if (typeof jonas[i] !== "string") continue;
+
+//   console.log(jonas[i], typeof jonas[i]);
+// }
+
+// console.log(" --- BREAK");
+// for (let i = 0; i < jonas.length; i++) {
+//   if (typeof jonas[i] === "number") break;
+
+//   console.log(jonas[i], typeof jonas);
+// }
+const jonas = [
+  "Jonas",
+  "Schmdn",
+  2037 - 1991,
+  "teacher",
+  ["Michael", "Peter", "Steven"],
+];
+for (let i = jonas.length - 1; i >= 0; i--) {
+  console.log(jonas[i]);
+}
