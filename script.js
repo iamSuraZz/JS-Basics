@@ -293,10 +293,30 @@
 //   console.log(jonas[i]);
 // }
 
-for (let exercise = 1; exercise < 4; exercise++) {
-  console.log(`-------- Starting exercise ${exercise}`);
+// for (let exercise = 1; exercise < 4; exercise++) {
+//   console.log(`-------- Starting exercise ${exercise}`);
 
-  for (let rep = 1; rep < 6; rep++) {
-    console.log(`Lifting weight repetition ${rep}`);
+//   for (let rep = 1; rep < 6; rep++) {
+//     console.log(`Lifting weight repetition ${rep}`);
+//   }
+// }
+
+// For Loop
+// for (let rep = 1; rep <= 5; rep++) {
+//   console.log(`Lifting weights repetition ${rep}`);
+// }
+// //While Loop
+// let rep = 1;
+// while (rep <= 5) {
+//   console.log(`Lifting weights repetition ${rep}`);
+//   rep++;
+// }
+
+let dice = Math.floor(Math.random() * 6) + 1;
+while (dice !== 6) {
+  console.log(`You rolled a ${dice}`);
+  dice = Math.floor(Math.random() * 6) + 1;
+  if (dice == 6) {
+    console.log(`The loop is about to end.`);
   }
 }
