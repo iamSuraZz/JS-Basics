@@ -369,3 +369,10 @@
 // };
 // const amplitudeNew = calcTempAmplitudeNew([3, 5, 1], [9, 0, 5]);
 // console.log(amplitudeNew);
+
+console.log(document.querySelector(".message").textContent);
+document.querySelector(".message").textContent = "Correct Number ";
+document.querySelector(".number").textContent = "20";
+document.querySelector(".score").textContent = 13;
+document.querySelector(".guess").value = 50;
+console.log(document.querySelector(".guess").value);
