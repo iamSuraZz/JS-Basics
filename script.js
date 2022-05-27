@@ -638,35 +638,80 @@
 
 // This keyword
 
-console.log(this);
+// console.log(this);
 
-const calcAge = function (birthYear) {
-  console.log(2037 - birthYear);
-  console.log(this);
-};
-calcAge(1991);
+// const calcAge = function (birthYear) {
+//   console.log(2037 - birthYear);
+//   console.log(this);
+// };
+// calcAge(1991);
 
-const calcAgeArrow = (birthYear) => {
-  console.log(2037 - birthYear);
-  console.log(this);
-};
-calcAgeArrow(1980);
+// const calcAgeArrow = (birthYear) => {
+//   console.log(2037 - birthYear);
+//   console.log(this);
+// };
+// calcAgeArrow(1980);
+
+// const suraj = {
+//   year: 1991,
+//   place: "Nepal",
+//   calcAge: function () {
+//     console.log(this);
+//   },
+// };
+// suraj.calcAge();
+
+// const matilda = {
+//   year: 2017,
+// };
+
+// matilda.calcAge = suraj.calcAge;
+// matilda.calcAge();
+
+// const f = suraj.calcAge;
+// f(); //Gives undefined as it is a regular function expression
+
+// var firstName = "Matilda";
 
 const suraj = {
-  year: 1991,
-  place: "Nepal",
+  firstName: "Suraj",
+  year: 1996,
   calcAge: function () {
     console.log(this);
+    console.log(2037 - this.year);
+
+    // Solution 1
+    // We cannot directly use this keyword here here
+    //   const self = this;
+    //   const isMillenial = function () {
+    //     console.log(self.year >= 1981 && self.year <= 1996);
+    //   };
+    //   console.log(self);
+    //   isMillenial();
+    // },
+
+    // Solution 2
+    // Here we can use this because arrow function inherits this keyword from the parent scope...
+    const isMillenial = () => {
+      console.log(this.year >= 1981 && this.year <= 1996);
+    };
+    console.log(this);
+    isMillenial();
   },
+
+  greet: () => console.log(`Hey ${this.firstName}`),
 };
 suraj.calcAge();
+suraj.greet();
 
-const matilda = {
-  year: 2017,
+const addExpr = function (a, b) {
+  console.log(arguments);
+  return a + b;
 };
+addExpr(2, 5);
 
-matilda.calcAge = suraj.calcAge;
-matilda.calcAge();
-
-const f = suraj.calcAge;
-f(); //Gives undefined as it is a regular function expression
+var addArrow = (a, b) => {
+  console.log(arguments);
+  return a + b;
+};
+addArrow(2, 5, 7);
