@@ -673,45 +673,100 @@
 
 // var firstName = "Matilda";
 
-const suraj = {
-  firstName: "Suraj",
-  year: 1996,
-  calcAge: function () {
-    console.log(this);
-    console.log(2037 - this.year);
+// const suraj = {
+//   firstName: "Suraj",
+//   year: 1996,
+//   calcAge: function () {
+//     console.log(this);
+//     console.log(2037 - this.year);
 
-    // Solution 1
-    // We cannot directly use this keyword here here
-    //   const self = this;
-    //   const isMillenial = function () {
-    //     console.log(self.year >= 1981 && self.year <= 1996);
-    //   };
-    //   console.log(self);
-    //   isMillenial();
-    // },
+//     // Solution 1
+//     // We cannot directly use this keyword here here
+//     //   const self = this;
+//     //   const isMillenial = function () {
+//     //     console.log(self.year >= 1981 && self.year <= 1996);
+//     //   };
+//     //   console.log(self);
+//     //   isMillenial();
+//     // },
 
-    // Solution 2
-    // Here we can use this because arrow function inherits this keyword from the parent scope...
-    const isMillenial = () => {
-      console.log(this.year >= 1981 && this.year <= 1996);
-    };
-    console.log(this);
-    isMillenial();
-  },
+//     // Solution 2
+//     // Here we can use this because arrow function inherits this keyword from the parent scope...
+//     const isMillenial = () => {
+//       console.log(this.year >= 1981 && this.year <= 1996);
+//     };
+//     console.log(this);
+//     isMillenial();
+//   },
 
-  greet: () => console.log(`Hey ${this.firstName}`),
+//   greet: () => console.log(`Hey ${this.firstName}`),
+// };
+// suraj.calcAge();
+// suraj.greet();
+
+// const addExpr = function (a, b) {
+//   console.log(arguments);
+//   return a + b;
+// };
+// addExpr(2, 5);
+
+// var addArrow = (a, b) => {
+//   console.log(arguments);
+//   return a + b;
+// };
+// addArrow(2, 5, 7);
+
+// let age = 30;
+// let oldAge = age;
+// age = 31;
+// console.log(age);
+// console.log(oldAge);
+
+// const me = {
+//   name: "Suraj",
+//   age: 25,
+// };
+
+// const friend = me;
+// friend.age = 27;
+// console.log("Friend:", friend);
+// console.log("Me", me);
+
+// Note : While using const only primitive values remains unchanged but reference values can be changed or manipulated..
+
+// Primitive types
+let lastName = "Williams";
+let oldLastName = lastName;
+lastName = "Davis";
+console.log(lastName, oldLastName);
+
+//Reference types
+const jessica = {
+  firstName: "Jessica",
+  lastName: "Williams",
+  age: 27,
 };
-suraj.calcAge();
-suraj.greet();
 
-const addExpr = function (a, b) {
-  console.log(arguments);
-  return a + b;
-};
-addExpr(2, 5);
+const marriedJessica = jessica;
+marriedJessica.lastName = "Davis";
+console.log("Before marriage", jessica);
+console.log("After Marriage", marriedJessica);
 
-var addArrow = (a, b) => {
-  console.log(arguments);
-  return a + b;
+//Copying objects
+
+const jessica2 = {
+  firstName: "Jessica",
+  lastName: "Williams",
+  age: 27,
+  family: ["Alice", "Bob"],
 };
-addArrow(2, 5, 7);
+
+const jessicaCopy = Object.assign({}, jessica2);
+jessicaCopy.lastName = "Davis";
+console.log("Before Marriage:", jessica2);
+console.log("After Marriage:", jessicaCopy);
+
+jessicaCopy.family.push("Mary");
+jessicaCopy.family.push("John");
+console.log("Before Marriage:", jessica2);
+console.log("After Marriage:", jessicaCopy);
