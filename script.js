@@ -822,7 +822,7 @@
 // const [p = 1, q = 1, r = 1] = [8, 9];
 // console.log(p, q, r);
 
-///// /// Destructuring Objects /// //////
+/// /// Destructuring Objects /// //////
 
 const restaurant = {
   name: "Classico Italiano",
@@ -860,6 +860,10 @@ const restaurant = {
   },
   orderPasta: function (ing1, ing2, ing3) {
     console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, ${ing3}`);
+  },
+  orderPizza: function (mainIngridient, ...otherIngridient) {
+    console.log(mainIngridient);
+    console.log(otherIngridient);
   },
 };
 
@@ -935,6 +939,7 @@ console.log(ingredients);
 
 restaurant.orderPasta(...ingredients);
 
+// 1Destructuring
 // Objects
 const newRestaurant = { foundedIn: 1998, ...restaurant, founder: "Gizzale" };
 console.log(newRestaurant);
@@ -943,3 +948,37 @@ const restaurantCopy = { ...restaurant };
 restaurantCopy.name = "Ristornte Roma";
 console.log(restaurantCopy.name);
 console.log(restaurant.name);
+
+// // SPREAD, because on Right side of =
+const arr1 = [1, 2, ...[3, 4]];
+console.log(arr1);
+
+//// // REST, because on LEFT side of =
+const [aa, ba, ...others] = [1, 2, 3, 4, 5];
+console.log(aa, ba, others);
+
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, otherFood);
+
+//Objects
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+
+// 2Functions
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  console.log(sum);
+};
+add(2, 3);
+add(5, 3, 7, 2);
+add(5, 6, 3, 7, 8);
+
+const x = [23, 5, 7];
+add(...x);
+
+restaurant.orderPizza("Mushroom", "onion", "olives", "spinach");
+restaurant.orderPizza("mushroom");
