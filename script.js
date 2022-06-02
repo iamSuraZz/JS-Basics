@@ -823,49 +823,45 @@
 // console.log(p, q, r);
 
 /// /// Destructuring Objects /// //////
+const weekdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+const openingHours = {
+  [weekdays[0]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [weekdays[5]]: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
 
-// const restaurant = {
-//   name: "Classico Italiano",
-//   location: "Via Angelo Tavanti 23, Firenze, Italy",
-//   categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
-//   starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
-//   openingHours: {
-//     thu: {
-//       open: 12,
-//       close: 22,
-//     },
-//     fri: {
-//       open: 11,
-//       close: 23,
-//     },
-//     sat: {
-//       open: 0, // Open 24 hours
-//       close: 24,
-//     },
-//   },
-
-//   mainMenu: ["Pizza", "Pasta", "Risotto"],
-//   order: function (starterIndex, mainIndex) {
-//     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-//   },
-//   orderDelivery: function ({
-//     starterIndex = 1,
-//     mainIndex = 0,
-//     time = "20:00",
-//     address,
-//   }) {
-//     console.log(
-//       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time} `
-//     );
-//   },
-//   orderPasta: function (ing1, ing2, ing3) {
-//     console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, ${ing3}`);
-//   },
-//   orderPizza: function (mainIngridient, ...otherIngridient) {
-//     console.log(mainIngridient);
-//     console.log(otherIngridient);
-//   },
-// };
+const restaurant = {
+  name: "Classico Italiano",
+  location: "Via Angelo Tavanti 23, Firenze, Italy",
+  categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
+  starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
+  openingHours,
+  mainMenu: ["Pizza", "Pasta", "Risotto"],
+  order(starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+  orderDelivery({ starterIndex = 1, mainIndex = 0, time = "20:00", address }) {
+    console.log(
+      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time} `
+    );
+  },
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, ${ing3}`);
+  },
+  orderPizza: function (mainIngridient, ...otherIngridient) {
+    console.log(mainIngridient);
+    console.log(otherIngridient);
+  },
+};
 
 // restaurant.orderDelivery({
 //   time: "23:30",
@@ -1107,3 +1103,39 @@ printGoals(...game.scored);
 
 team1 < team2 && console.log("Team1 is more likely to win");
 team1 > team2 && console.log("Team1 is more likely to win");
+
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+for (const item of menu) console.log(item);
+
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
+// console.log([...menu.entries()]);
+console.log(restaurant);
+
+// With optional chaining
+if (restaurant && restaurant.openingHours && restaurant.openingHours.mon)
+  console.log(restaurant.openingHours.mon.open);
+console.log(restaurant.openingHours.mon?.open);
+console.log(restaurant?.openingHours?.mon?.open);
+
+// Example
+const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+for (const day of days) {
+  restaurant.openingHours[day];
+  const open = restaurant.openingHours[day]?.open ?? "Closed";
+  const close = restaurant.openingHours[day]?.close ?? "Closed ";
+  console.log(`On ${day}, we open at ${open} and close at ${close}`);
+}
+
+// Methods
+console.log(restaurant.order?.(0, 1) ?? "Method doesn't exist");
+console.log(restaurant.orderRisotto?.(0, 1) ?? "Method doesn't exist");
+
+// Arrays
+const users = [{ name: "Suraj", email: "surajdev9886@gmail.com" }];
+
+console.log(users[0]?.name ?? "User array is empty");
+
+if (users.length > 0) console.log(users[0].name);
+else console.log("user array is empty");
