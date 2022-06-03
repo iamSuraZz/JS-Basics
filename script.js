@@ -1104,63 +1104,87 @@ printGoals(...game.scored);
 team1 < team2 && console.log("Team1 is more likely to win");
 team1 > team2 && console.log("Team1 is more likely to win");
 
-const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
-for (const item of menu) console.log(item);
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// for (const item of menu) console.log(item);
 
-for (const [i, el] of menu.entries()) {
-  console.log(`${i + 1}: ${el}`);
+// for (const [i, el] of menu.entries()) {
+//   console.log(`${i + 1}: ${el}`);
+// }
+// // console.log([...menu.entries()]);
+// console.log(restaurant);
+
+// // With optional chaining
+// if (restaurant && restaurant.openingHours && restaurant.openingHours.mon)
+//   console.log(restaurant.openingHours.mon.open);
+// console.log(restaurant.openingHours.mon?.open);
+// console.log(restaurant?.openingHours?.mon?.open);
+
+// // Example
+// const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+// for (const day of days) {
+//   restaurant.openingHours[day];
+//   const open = restaurant.openingHours[day]?.open ?? "Closed";
+//   const close = restaurant.openingHours[day]?.close ?? "Closed ";
+//   console.log(`On ${day}, we open at ${open} and close at ${close}`);
+// }
+
+// // Methods
+// console.log(restaurant.order?.(0, 1) ?? "Method doesn't exist");
+// console.log(restaurant.orderRisotto?.(0, 1) ?? "Method doesn't exist");
+
+// // Arrays
+// const users = [{ name: "Suraj", email: "surajdev9886@gmail.com" }];
+
+// console.log(users[0]?.name ?? "User array is empty");
+
+// if (users.length > 0) console.log(users[0].name);
+// else console.log("user array is empty");
+
+// // Looping Objects - for of loop
+
+// const properties = Object.keys(openingHours);
+// console.log(properties);
+
+// let openStr = `We are open on ${properties.length} days :`;
+
+// for (const day of properties) {
+//   openStr += `${day}, `;
+// }
+// console.log(openStr);
+
+// // Property Values
+// const values = Object.values(openingHours);
+// console.log(values);
+
+// // Entire Object
+// const entries = Object.entries(openingHours);
+// console.log(entries);
+
+// // [key , value]
+// for (const [day, { open, close }] of entries) {
+//   console.log(`On ${day} we open at ${open} and close at ${close}.`);
+// }
+
+// Assessment ///
+//1
+for (const [i, player] of game.scored.entries()) {
+  console.log(`Goal ${i + 1} : ${player}`);
 }
-// console.log([...menu.entries()]);
-console.log(restaurant);
 
-// With optional chaining
-if (restaurant && restaurant.openingHours && restaurant.openingHours.mon)
-  console.log(restaurant.openingHours.mon.open);
-console.log(restaurant.openingHours.mon?.open);
-console.log(restaurant?.openingHours?.mon?.open);
+const odds = Object.values(game.odds);
+let average = 0;
+for (const odd of odds) {
+  average += odd;
+}
+average /= odds.length;
+console.log(`The average odd is ${average}`);
 
-// Example
-const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
-for (const day of days) {
-  restaurant.openingHours[day];
-  const open = restaurant.openingHours[day]?.open ?? "Closed";
-  const close = restaurant.openingHours[day]?.close ?? "Closed ";
-  console.log(`On ${day}, we open at ${open} and close at ${close}`);
+for (const [team, odd] of Object.entries(game.odds)) {
+  const teamStr = team === "x" ? "draw" : `victory ${game[team]}`;
+  console.log(`Odd of ${teamStr} ${odd}`);
 }
 
-// Methods
-console.log(restaurant.order?.(0, 1) ?? "Method doesn't exist");
-console.log(restaurant.orderRisotto?.(0, 1) ?? "Method doesn't exist");
-
-// Arrays
-const users = [{ name: "Suraj", email: "surajdev9886@gmail.com" }];
-
-console.log(users[0]?.name ?? "User array is empty");
-
-if (users.length > 0) console.log(users[0].name);
-else console.log("user array is empty");
-
-// Looping Objects - for of loop
-
-const properties = Object.keys(openingHours);
-console.log(properties);
-
-let openStr = `We are open on ${properties.length} days :`;
-
-for (const day of properties) {
-  openStr += `${day}, `;
-}
-console.log(openStr);
-
-// Property Values
-const values = Object.values(openingHours);
-console.log(values);
-
-// Entire Object
-const entries = Object.entries(openingHours);
-console.log(entries);
-
-// [key , value]
-for (const [day, { open, close }] of entries) {
-  console.log(`On ${day} we open at ${open} and close at ${close}.`);
+const scorers = {};
+for (const player of game.scored) {
+  scorers[player] ? scorers[player]++ : (scorers[player] = 1);
 }
