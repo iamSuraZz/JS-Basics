@@ -1035,74 +1035,74 @@ TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Th
 
 */
 
-const game = {
-  team1: "Bayern Munich",
-  team2: "Borrussia Dortmund",
-  players: [
-    [
-      "Neuer",
-      "Pavard",
-      "Martinez",
-      "Alaba",
-      "Davies",
-      "Kimmich",
-      "Goretzka",
-      "Coman",
-      "Muller",
-      "Gnarby",
-      "Lewandowski",
-    ],
-    [
-      "Burki",
-      "Schulz",
-      "Hummels",
-      "Akanji",
-      "Hakimi",
-      "Weigl",
-      "Witsel",
-      "Hazard",
-      "Brandt",
-      "Sancho",
-      "Gotze",
-    ],
-  ],
-  score: "4:0",
-  scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
-  date: "Nov 9th, 2037",
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
-  },
-};
+// const game = {
+//   team1: "Bayern Munich",
+//   team2: "Borrussia Dortmund",
+//   players: [
+//     [
+//       "Neuer",
+//       "Pavard",
+//       "Martinez",
+//       "Alaba",
+//       "Davies",
+//       "Kimmich",
+//       "Goretzka",
+//       "Coman",
+//       "Muller",
+//       "Gnarby",
+//       "Lewandowski",
+//     ],
+//     [
+//       "Burki",
+//       "Schulz",
+//       "Hummels",
+//       "Akanji",
+//       "Hakimi",
+//       "Weigl",
+//       "Witsel",
+//       "Hazard",
+//       "Brandt",
+//       "Sancho",
+//       "Gotze",
+//     ],
+//   ],
+//   score: "4:0",
+//   scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
+//   date: "Nov 9th, 2037",
+//   odds: {
+//     team1: 1.33,
+//     x: 3.25,
+//     team2: 6.5,
+//   },
+// };
 
-const [players1, players2] = game.players;
-console.log(players1, players2);
+// const [players1, players2] = game.players;
+// console.log(players1, players2);
 
-const [gk, ...fieldPlayers] = players1;
-console.log(gk, fieldPlayers);
+// const [gk, ...fieldPlayers] = players1;
+// console.log(gk, fieldPlayers);
 
-const allPlayers = [...players1, ...players2];
-console.log(allPlayers);
+// const allPlayers = [...players1, ...players2];
+// console.log(allPlayers);
 
-const players1Final = ["Thiago", "Coutinho", "Perisic", ...players1];
-console.log(players1Final);
+// const players1Final = ["Thiago", "Coutinho", "Perisic", ...players1];
+// console.log(players1Final);
 
-const {
-  odds: { team1, x: draw, team2 },
-} = game;
-console.log(team1, draw, team2);
+// const {
+//   odds: { team1, x: draw, team2 },
+// } = game;
+// console.log(team1, draw, team2);
 
-const printGoals = function (...players) {
-  console.log(players);
-  console.log(`${players.length} goals were scored`);
-};
-printGoals("Kimmich", "Goretzka", "Coman", "Muller");
-printGoals("Davies", "Muller");
-printGoals(...game.scored);
+// const printGoals = function (...players) {
+//   console.log(players);
+//   console.log(`${players.length} goals were scored`);
+// };
+// printGoals("Kimmich", "Goretzka", "Coman", "Muller");
+// printGoals("Davies", "Muller");
+// printGoals(...game.scored);
 
-team1 < team2 && console.log("Team1 is more likely to win");
-team1 > team2 && console.log("Team1 is more likely to win");
+// team1 < team2 && console.log("Team1 is more likely to win");
+// team1 > team2 && console.log("Team1 is more likely to win");
 
 // const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 // for (const item of menu) console.log(item);
@@ -1166,25 +1166,121 @@ team1 > team2 && console.log("Team1 is more likely to win");
 // }
 
 // Assessment ///
-//1
-for (const [i, player] of game.scored.entries()) {
-  console.log(`Goal ${i + 1} : ${player}`);
-}
+// //1
+// for (const [i, player] of game.scored.entries()) {
+//   console.log(`Goal ${i + 1} : ${player}`);
+// }
 
-const odds = Object.values(game.odds);
-let average = 0;
-for (const odd of odds) {
-  average += odd;
-}
-average /= odds.length;
-console.log(`The average odd is ${average}`);
+// const odds = Object.values(game.odds);
+// let average = 0;
+// for (const odd of odds) {
+//   average += odd;
+// }
+// average /= odds.length;
+// console.log(`The average odd is ${average}`);
 
-for (const [team, odd] of Object.entries(game.odds)) {
-  const teamStr = team === "x" ? "draw" : `victory ${game[team]}`;
-  console.log(`Odd of ${teamStr} ${odd}`);
-}
+// for (const [team, odd] of Object.entries(game.odds)) {
+//   const teamStr = team === "x" ? "draw" : `victory ${game[team]}`;
+//   console.log(`Odd of ${teamStr} ${odd}`);
+// }
 
-const scorers = {};
-for (const player of game.scored) {
-  scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+// const scorers = {};
+// for (const player of game.scored) {
+//   scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+// }
+
+///// Sets
+
+// const orderSet = new Set([
+//   "Pasta",
+//   "Pizza",
+//   "Pizza",
+//   "Risotto",
+//   "Pasta",
+//   "Pizza",
+// ]);
+// console.log(orderSet);
+
+// console.log(new Set("Suraj"));
+// console.log(orderSet.size);
+// console.log(orderSet.has("Bread"));
+// orderSet.add("Garlic bread");
+// orderSet.add("Garlic bread");
+// console.log(orderSet);
+// orderSet.delete("Garlic bread");
+// console.log(orderSet);
+// // orderSet.clear();
+// console.log(orderSet);
+
+// for (const order of orderSet) console.log(order);
+
+// // Usecase for SET
+
+// const staff = ["waiter", "chef", "manager", "chef", "waiter"];
+// const staffUnique = [...new Set(staff)];
+// console.log(staffUnique);
+
+// Map
+const rest = new Map();
+rest.set("name", "classico italino");
+rest.set(1, "firenze, italy");
+console.log(rest.set(2, "Libson, Portugal"));
+
+rest
+  .set("catagories", ["Italian", "Pizzaeria", "vegetarian", "organic"])
+  .set("open", 11)
+  .set("close", 23)
+  .set(true, "we are open")
+  .set(false, "we are close");
+console.log(rest);
+console.log(rest.get("name"));
+console.log(rest.get(true));
+console.log(rest.get(1));
+
+const time = 8;
+console.log(rest.get(time > rest.get("open") && time < rest.get("close")));
+
+console.log(rest.has("catagories"));
+rest.delete(2);
+// console.log(rest);
+// console.log(rest.size);
+// rest.clear();
+const arr = [1, 2];
+rest.set(arr, "test");
+
+rest.set(document.querySelector("h1"), "heading");
+
+console.log(rest);
+console.log(rest.size);
+
+console.log(rest.get(arr));
+
+const question = new Map([
+  ["question", "what is the best programming language in the world?"],
+  [1, "C"],
+  [2, "Java"],
+  [3, "JavaScript"],
+  ["correct", 3],
+  [true, "correct"],
+  [false, "try again"],
+]);
+console.log(question);
+
+// Convert object ot map
+console.log(Object.entries(openingHours));
+const hoursMap = new Map(Object.entries(openingHours));
+console.log(hoursMap);
+
+for (const [key, value] of question) {
+  if (typeof key === "number") console.log(`Answer ${key} : ${value}`);
 }
+const answer = 3;
+// const answer = Number(prompt("Your answer"));
+console.log(answer);
+1;
+
+console.log(question.get(question.get("correct") === answer));
+
+// Conver map to an array
+
+console.log(...question);
