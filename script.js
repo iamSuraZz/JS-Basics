@@ -1504,3 +1504,33 @@ createBooking("LH123", 2, 800);
 createBooking("LH123", 2);
 createBooking("LH123", 5);
 createBooking("LH123", undefined, 1000);
+
+const flight = "LH243";
+const suraj = {
+  name: "Suraj Poddar",
+  passport: 345678876,
+};
+
+const checkIn = function (flightNum, passenger) {
+  flightNum = "LH999";
+  passenger.name = "Mr." + passenger.name;
+
+  if (passenger.passport === 345678876) {
+    alert("Check in");
+  } else {
+    alert("wrong passport");
+  }
+};
+// checkIn(flight, suraj);
+// console.log(flight);
+// console.log(suraj);
+
+// Is same as doing...
+// const flightNum = flight;
+// const passenger = suraj;
+
+const newPassport = function (person) {
+  person.passport = Math.floor(Math.random() * 10000000000);
+};
+newPassport(suraj);
+checkIn(flight, suraj);
