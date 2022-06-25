@@ -1535,31 +1535,46 @@ TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Th
 // newPassport(suraj);
 // checkIn(flight, suraj);
 
-const oneWord = function (str) {
-  return str.replace(/ /g, "").toLowerCase();
+// const oneWord = function (str) {
+//   return str.replace(/ /g, "").toLowerCase();
+// };
+
+// const upperFirstWord = function (str) {
+//   const [first, ...others] = str.split(" ");
+//   return [first.toUpperCase(), ...others].join(" ");
+// };
+
+// // Higher-order function
+// const transformer = function (str, fn) {
+//   console.log(`Original string: ${str}`);
+//   console.log(`Transformed string: ${fn(str)}`);
+
+//   console.log(`Transformed by: ${fn.name}`);
+// };
+
+// transformer("JavaScript is the best!", upperFirstWord);
+// transformer("JavaScript is the best!", oneWord);
+
+// // JS uses callbacks all the time
+// const high5 = function () {
+//   console.log("🙏🙏");
+// };
+
+// document.body.addEventListener("click", high5);
+
+// ["Suraj", "Deepak", "Keshav", "Anshu"].forEach(high5);
+
+const greet = (greeting) => {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
 };
 
-const upperFirstWord = function (str) {
-  const [first, ...others] = str.split(" ");
-  return [first.toUpperCase(), ...others].join(" ");
-};
+const greeterHey = greet("Hey");
+greeterHey("Suraj");
 
-// Higher-order function
-const transformer = function (str, fn) {
-  console.log(`Original string: ${str}`);
-  console.log(`Transformed string: ${fn(str)}`);
+greet("Hello")("There");
 
-  console.log(`Transformed by: ${fn.name}`);
-};
-
-transformer("JavaScript is the best!", upperFirstWord);
-transformer("JavaScript is the best!", oneWord);
-
-// JS uses callbacks all the time
-const high5 = function () {
-  console.log("🙏🙏");
-};
-
-document.body.addEventListener("click", high5);
-
-["Suraj", "Deepak", "Keshav", "Anshu"].forEach(high5);
+// Challenge
+const greetArr = (greeting) => (name) => console.log(`${greeting} ${name}`);
+greetArr("Hii")("Suraj");
