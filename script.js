@@ -1564,17 +1564,67 @@ TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Th
 
 // ["Suraj", "Deepak", "Keshav", "Anshu"].forEach(high5);
 
-const greet = (greeting) => {
-  return function (name) {
-    console.log(`${greeting} ${name}`);
-  };
+// const greet = (greeting) => {
+//   return function (name) {
+//     console.log(`${greeting} ${name}`);
+//   };
+// };
+
+// const greeterHey = greet("Hey");
+// greeterHey("Suraj");
+
+// greet("Hello")("There");
+
+// // Challenge
+// const greetArr = (greeting) => (name) => console.log(`${greeting} ${name}`);
+// greetArr("Hii")("Suraj");
+
+const luftansa = {
+  airline: "Luftansa",
+  iataCode: "LH",
+  bookings: [],
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}.`
+    );
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+  },
+};
+luftansa.book("283", "Suraj Poddar");
+luftansa.book("188", "Bhola Sharma");
+// console.log(luftansa);
+
+const eurowings = {
+  airline: "Eurowings",
+  iataCode: "EW",
+  bookings: [],
 };
 
-const greeterHey = greet("Hey");
-greeterHey("Suraj");
+const books = luftansa.book;
 
-greet("Hello")("There");
+// Does not work
+// book(23, "ThisIS");
 
-// Challenge
-const greetArr = (greeting) => (name) => console.log(`${greeting} ${name}`);
-greetArr("Hii")("Suraj");
+// Call method
+books.call(eurowings, 23, "Sarah Williams");
+console.log(eurowings);
+
+books.call(luftansa, 239, "Mary Cooper");
+console.log(luftansa);
+
+const swiss = {
+  airline: "Swiss Airlines",
+  iataCode: "LX",
+  bookings: [],
+};
+
+books.call(swiss, 583, "Mary Cooper");
+console.log(swiss);
+
+// Apply method
+
+const flightData = [7979, "George Cooper"];
+books.apply(swiss, flightData);
+console.log(swiss);
+
+books.call(swiss, ...flightData);
