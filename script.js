@@ -1714,15 +1714,71 @@ TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Th
 
 // Immidiately invoked function expression (IIFE) :-
 
-const runOnce = function () {
-  console.log("This will never run again");
-};
-runOnce();
+// const runOnce = function () {
+//   console.log("This will never run again");
+// };
+// runOnce();
 
-// IIFE
-(function () {
-  console.log("This will never run again");
-  const isPrivate = 23;
-})();
-console.log(isPrivate);
-(() => console.log("This will also not run again"))();
+// // IIFE
+// (function () {
+//   console.log("This will never run again");
+//   const isPrivate = 23;
+// })();
+// console.log(isPrivate);
+// (() => console.log("This will also not run again"))();
+
+const secureBooking = function () {
+  let passengerCount = 0;
+
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  };
+};
+
+const booker = secureBooking();
+booker();
+booker();
+booker();
+
+console.dir(booker);
+
+// Example 1
+let f;
+const g = function () {
+  const a = 23;
+
+  f = function () {
+    console.log(a * 2);
+  };
+};
+const h = function () {
+  const b = 777;
+  f = function () {
+    console.log(b * 2);
+  };
+};
+g();
+f();
+console.dir(f);
+
+// Reassigning f function
+h();
+f();
+console.dir(f);
+
+// Example 2
+
+const boardPassengers = function (n, waitMin) {
+  const perGroup = n / 3;
+
+  setTimeout(function () {
+    console.log(`We are now boarding all ${n} passengers`);
+    console.log(`There are 3 groups, each with ${perGroup} passengers`);
+  }, waitMin * 1000);
+
+  console.log(`Will start boarding in ${waitMin} seconds.`);
+};
+
+// const perGroup = 1000;
+boardPassengers(180, 3);
