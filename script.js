@@ -1991,8 +1991,6 @@ const createUsernames = function (accs) {
 
 createUsernames(accounts);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-
 const updateUI = function (acc) {
   // Display movements
   displayMovements(acc.movements);
@@ -2090,6 +2088,8 @@ btnClose.addEventListener("click", function (e) {
   }
   inputCloseUsername.value = inputClosePin.value = "";
 });
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 ///////////////////////////////////////
 // Coding Challenge #1
@@ -2258,20 +2258,32 @@ GOOD LUCK 😀
 // const account = accounts.find((acc) => acc.owner === "Jessica Davis");
 // console.log(account);
 
-// The Some Method
-console.log(movements);
+// // The Some Method
+// console.log(movements);
 
-// EQUALITY
-console.log(movements.includes(-130));
+// // EQUALITY
+// console.log(movements.includes(-130));
 
-// SOME : CONDITION
-const anyDeposits = movements.some((mov) => mov > 1500);
-console.log(anyDeposits);
+// // SOME : CONDITION
+// const anyDeposits = movements.some((mov) => mov > 1500);
+// console.log(anyDeposits);
 
-// EVERY
+// // EVERY
 
-console.log(movements.every((mov) => mov > 0));
-console.log(account4.movements.every((mov) => mov > 0));
+// console.log(movements.every((mov) => mov > 0));
+// console.log(account4.movements.every((mov) => mov > 0));
 
-// Separate callback
-const deposit = (mov) => mov > 0;
+// // Separate callback
+// const deposit = (mov) => mov > 0;
+
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat());
+
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat(2));
+
+const overAllBalance = accounts
+  .flatMap((acc) => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0);
+
+console.log(overAllBalance);
