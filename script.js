@@ -2300,26 +2300,87 @@ GOOD LUCK 😀
 
 // / Sorting arrays
 // Strings
-const owners = ["Jonas", "Zach", "Adam", "Martha"];
-console.log(owners.sort());
+// const owners = ["Jonas", "Zach", "Adam", "Martha"];
+// console.log(owners.sort());
 
-console.log(movements);
+// console.log(movements);
 
-// return < 0, A, B (keep order)
-// return > 0, B, A (switch order)
+// // return < 0, A, B (keep order)
+// // return > 0, B, A (switch order)
 
-// Ascending
-// movements.sort((a, b) => {
-//   if (a > b) return 1;
-//   if (a < b) return -1;
-// });
-movements.sort((a, b) => a - b);
-console.log(movements);
+// // Ascending
+// // movements.sort((a, b) => {
+// //   if (a > b) return 1;
+// //   if (a < b) return -1;
+// // });
+// movements.sort((a, b) => a - b);
+// console.log(movements);
 
-// Descending
-// movements.sort((a, b) => {
-//   if (a > b) return -1;
-//   if (a < b) return 1;
-// });
-movements.sort((a, b) => b - a);
-console.log(movements);
+// // Descending
+// // movements.sort((a, b) => {
+// //   if (a > b) return -1;
+// //   if (a < b) return 1;
+// // });
+// movements.sort((a, b) => b - a);
+// console.log(movements);
+
+// const movementsUI = Array.from(document.querySelectorAll(".movements__value"));
+// console.log(movementsUI);
+
+// 1.
+/// Total money in the bank
+const bankDepositSum = accounts
+  .flatMap((acc) => acc.movements)
+  .filter((mov) => mov > 0)
+  .reduce((sum, cur) => sum + cur, 0);
+console.log(bankDepositSum);
+
+// 2.
+// Number of deposits greater than 1000
+// const numDeposits1000 = accounts
+//   .flatMap((acc) => acc.movements)
+//   .filter((mov) => mov > 1000).length;
+
+const numDeposits1000 = accounts
+  .flatMap((acc) => acc.movements)
+  // .reduce((count, cur) => (cur >= 1000 ? count + 1 : count), 0);
+  .reduce((count, cur) => (cur >= 1000 ? ++count : count), 0);
+console.log(numDeposits1000);
+
+// Prefixed ++ operator
+let a = 10;
+console.log(++a);
+console.log(a);
+
+// 3. Total deposits and withdrawls
+const { deposits, withdrawls } = accounts
+  .flatMap((acc) => acc.movements)
+  .reduce(
+    (sums, cur) => {
+      // cur > 0 ? (sums.deposits += cur) : (sums.withdrawls += cur);
+      // return sums;
+      sums[cur > 0 ? "deposits" : "withdrawls"] += cur;
+      return sums;
+    },
+    { deposits: 0, withdrawls: 0 }
+  );
+console.log(deposits, withdrawls);
+
+// 4.
+// this is a nice title -> This Is a Nice Title
+const convertTitleCase = function (title) {
+  const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
+
+  const exceptions = ["a", "an", "the", "but", "and", "or", "on", "in", "with"];
+
+  const titleCase = title
+    .toLowerCase()
+    .split(" ")
+    .map((word) => (exceptions.includes(word) ? word : capitalize(word)))
+    .join(" ");
+  return capitalize(titleCase);
+};
+
+console.log(convertTitleCase("this is a nice title"));
+console.log(convertTitleCase("this is a LONG title but not too long"));
+console.log(convertTitleCase("and here is another title with an EXAMPLE"));
