@@ -2513,14 +2513,16 @@ btnLoan.addEventListener("click", function (e) {
     amount > 0 &&
     currentAccount.movements.some((mov) => mov >= amount * 0.1)
   ) {
-    // Add movement
-    currentAccount.movements.push(amount);
+    setTimeout(function () {
+      // Add movement
+      currentAccount.movements.push(amount);
 
-    // Add loan date
-    currentAccount.movementsDates.push(new Date().toISOString());
+      // Add loan date
+      currentAccount.movementsDates.push(new Date().toISOString());
 
-    // Update UI
-    updateUI(currentAccount);
+      // Update UI
+      updateUI(currentAccount);
+    }, 2500);
   }
   inputLoanAmount.value = "";
 });
@@ -2702,13 +2704,13 @@ console.log(new Date(3 * 24 * 60 * 60 * 1000));
 // console.log(future.getTime());
 // console.log(new Date(2142237180000));
 
-const future = new Date(2037, 10, 19, 15, 23);
-console.log(+future);
+// const future = new Date(2037, 10, 19, 15, 23);
+// console.log(+future);
 
-const calcDaysPass = (date1, date2) =>
-  Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
-const days1 = calcDaysPass(new Date(2037, 3, 14), new Date(2037, 3, 24));
-console.log(days1);
+// const calcDaysPass = (date1, date2) =>
+//   Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
+// const days1 = calcDaysPass(new Date(2037, 3, 14), new Date(2037, 3, 24));
+// console.log(days1);
 
 // const locale = navigator.language;
 // const nows = new Date();
@@ -2723,16 +2725,39 @@ console.log(days1);
 // const newNow = new Intl.DateTimeFormat(locale, options).format(nows);
 // console.log(locale, newNow);
 
-const num = 45398374.75;
-const options = {
-  style: "currency",
-  unit: "mile-per-hour",
-  currency: "EUR",
-};
-console.log("US : ", new Intl.NumberFormat("en-US", options).format(num));
-console.log("India : ", new Intl.NumberFormat("en-IN", options).format(num));
-console.log("Germany : ", new Intl.NumberFormat("de-DE", options).format(num));
-console.log(
-  navigator.language,
-  new Intl.NumberFormat(navigator.language, options).format(num)
+// const num = 45398374.75;
+// const options = {
+//   style: "currency",
+//   unit: "mile-per-hour",
+//   currency: "EUR",
+// };
+// console.log("US : ", new Intl.NumberFormat("en-US", options).format(num));
+// console.log("India : ", new Intl.NumberFormat("en-IN", options).format(num));
+// console.log("Germany : ", new Intl.NumberFormat("de-DE", options).format(num));
+// console.log(
+//   navigator.language,
+//   new Intl.NumberFormat(navigator.language, options).format(num)
+// );
+
+// setTimeout()
+
+const ingredients = ["olives", "spinach"];
+
+const pizzaTimeOut = setTimeout(
+  (ing1, ing2) =>
+    console.log(`Here is your pizza with ${ing1} and ${ing2} 🍕🍕`),
+  3000,
+  ...ingredients
 );
+console.log("Waiting...");
+if (ingredients.includes("spinach")) clearTimeout(pizzaTimeOut);
+
+// setInterval
+setInterval(function () {
+  const now = new Date();
+  const hour = now.getHours();
+  const min = now.getMinutes();
+  const sec = now.getSeconds();
+  const mili = now.getMilliseconds();
+  console.log(`${hour}:${min}:${sec}`);
+}, 1000);
